@@ -28,7 +28,7 @@ struct HTTPSERVERWRAPPERMODULE_API FEndpointData
 	EHttpServerWrapperRequestVerbs Verbs {};
 }; 
 
-UCLASS(DisplayName="REST Api Server", Config = "HttpServer", DefaultConfig)
+UCLASS(DisplayName="HTTP Server Settings", Config = "HttpServer", DefaultConfig)
 class HTTPSERVERWRAPPERMODULE_API UHttpServerSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
