@@ -12,6 +12,7 @@ The connection algorithm is as follows:
 4. [override request processing logic](#4-override-the-request-processing-logic):
    1. [in blueprint](#41-in-blueprint);
    2. [in code](#42-in-code);
+5. [known issues](#5-known-issues)
 
 Prof IT!
 
@@ -152,3 +153,26 @@ For full control over request processing and response sending, create your own c
 ```C++
 virtual bool HandleRequest(const FHttpServerRequest& Request, const FHttpResultCallback& OnComplete, FEndpointData EndpointData);
 ```
+
+## 5. Known issues
+
+### **I connected the plugin to the project, configured everything, but I can’t reach the server API over the network.**
+
+The situation is quite typical: the server works locally, but does not accept connections by IP address from the network. 
+
+* What's happening:
+    * 127.0.0.1:8080 works — this is a local loopback. The server listens only for local connections.
+    * 192.168.0.15:8080 (as exapmle) does not work — because the server does not listen to the external interface (IP network address).
+
+* Solution:
+
+In the project, in the `Config` folder, find and edit the `DefaultEngine.ini` file, adding the following section to the end of the file, thereby indicating to the engine that the server should be made available for external connections over the network:
+
+```ini
+[HTTPServer.Listeners]
+DefaultBindAddress=0.0.0.0
+```
+
+### **I send https requests, but the server does not accept them**
+
+In Unreal Engine 5 (including 5.5), the `HttpServerModule` does not support HTTPS by default (TLS/SSL) out of the box - it is intended only for a local or internal HTTP server and works exclusively over the HTTP protocol.
