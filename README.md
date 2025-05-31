@@ -46,7 +46,7 @@ The next step in the `*.Build.cs` file is to add the `HttpServerWrapperModule` m
 
 ## 3. Set up the config
 
-The next step is to configure the module config file. This can be done using the UI: run the project in Unreal Editor and select `Settings -> Project` Settings in the window that opens on the left, select the section called `Plugin Settings -> REST Api Server` in the right part of the window, fill in the settings. For example:
+The next step is to configure the module config file. This can be done using the UI: run the project in Unreal Editor and select `Settings -> Project` Settings in the window that opens on the left, select the section called `Plugins -> HTTP Server Settings` in the right part of the window, fill in the settings. For example:
 
 ![REST Api Settings](media/04_restapi_settings.png)
 
